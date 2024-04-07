@@ -1,0 +1,37 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build venv",
+            "type": "shell",
+            "command": "/bin/bash -x scripts/venv.bash",
+            "problemMatcher": []
+        },
+        {
+            "label": "profile",
+            "type": "shell",
+            "command": "python -m cProfile -o /tmp/${fileBasenameNoExtension}.pref -s cumtime ${file} && tuna /tmp/${fileBasenameNoExtension}.pref ",
+            "problemMatcher": []
+        },
+        {
+            "label": "build wheel",
+            "type": "shell",
+            "command": "${command:python.interpreterPath} setup.py bdist_wheel",
+            "problemMatcher": []
+        },
+        {
+            "label": "build prod container",
+            "type": "shell",
+            "command": "docker build  -t control_tools:prod -f dockers/Dockerfile.prod --build-arg APP_VER=${input:app_version} .",
+            "problemMatcher": []
+        },
+    ],
+    "inputs": [
+        {
+            "id": "app_version",
+            "description": "app_version",
+            "options": ["0.0.1", "0.0.2"],
+            "type": "pickString"
+        },
+    ]
+}

@@ -1,0 +1,5 @@
+FROM python_base as deploy
+
+# WORKDIR /home/user
+COPY ./requirements.txt /tmp/requirements.txt
+RUN pip install --no-cache-dir --upgrade -r /tmp/requirements.txt

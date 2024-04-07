@@ -1,0 +1,10 @@
+-r requirements.txt
+-e .
+black
+mypy
+isort
+pytest
+pylint
+flake8
+tuna # profiler pstat graph
+wheel # for bdist_wheel

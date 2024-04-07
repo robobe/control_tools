@@ -1,0 +1,11 @@
+FROM ubuntu:python
+ARG APP_VER=0
+USER user
+WORKDIR /home/user
+RUN echo ${APP_VER}
+ENV PATH="${PATH}:/home/user/.local/bin"
+COPY ./requirements.txt /tmp/requirements.txt
+RUN pip install --no-cache-dir --upgrade -r /tmp/requirements.txt
+COPY ./dist/control_tools-${APP_VER}-py3-none-any.whl /tmp
+RUN pip install /tmp/control_tools-${APP_VER}-py3-none-any.whl
+ENTRYPOINT ["control_tools"]

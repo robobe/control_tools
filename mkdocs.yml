@@ -1,0 +1,16 @@
+site_name: control_tools
+site_description: control rools
+
+theme:
+  name: material
+
+markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+plugins:
+- search
+- mkdocstrings
