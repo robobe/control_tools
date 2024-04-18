@@ -1,4 +1,0 @@
-[submodule "python_project_template.wiki"]
-	path = python_project_template.wiki
-	url = https://github.com/robobe/python_project_template.wiki.git
-	branch = master
